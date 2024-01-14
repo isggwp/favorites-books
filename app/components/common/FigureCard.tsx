@@ -10,7 +10,7 @@ const FigureCard = () => {
             alt="profile pic"
             width="64"
             height="64"
-            src="/common/bestcat.jpeg"
+            src="/common/isggwp-photo.png"
             className="w-full h-full rounded-full object-cover"
           />
         </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Icon } from "@iconify-icon/react";
+
 const FigureCard = () => {
   return (
     <figure className="cursor-pointer flex flex-col justify-center items-start sticky bg-gradient-to-r from-gray-700 to-indigo-600 pt-8 pb-8 px-10 rounded-3xl w-full sm:w-[400px]">
@@ -48,11 +48,6 @@ const FigureCard = () => {
             width="30"
             height="30"
             className="text-gray-200 w-4 h-auto hover:scale-125 transition-transform duration-300 hover:text-white"
-          />
-
-          <Icon
-            icon="mdi:gitlab"
-            className="text-gray-200 w-7 h-7 hover:scale-125 transition-transform duration-300 hover:text-white"
           />
         </a>
       </div>

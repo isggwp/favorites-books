@@ -42,13 +42,13 @@ const Experience = ({ data }: { data: DataExp[] }) => {
               <div className="w-9/12  sm:w-10/12 px-5 md:px-10">
                 <div className="w-full pl-5">
                   <section className="cursor-pointer group w-full -mt-10 border border-solid border-gray-100 hover:border-indigo-200 rounded-2xl shadow-md p-5 space-y-1">
-                    <p className="font-medium text-sm sm:text-base text-gray-700">
+                    <p className="font-medium text-sm sm:text-lg text-gray-700">
                       {item?.company}
                     </p>
                     <p className="font-light text-xs sm:text-base text-gray-500">
                       {item?.position}
                     </p>
-                    <p className="text-xs sm:text-base text-gray-400 font-normal">
+                    <p className="text-[0.8rem] sm:text-sm text-gray-400 font-normal">
                       {item?.desc}
                     </p>
                   </section>

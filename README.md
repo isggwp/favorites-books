@@ -1,10 +1,11 @@
-<div align="center">
-    <a href="https://isggwp.com"><h1 align="center">isggwp.com</h1></a>
+### cengongkirs simulation using [rajaongkir api](https://rajaongkir.com/dokumentasi/starter#cost-ringkasan)
 
-My personal website, built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [Upstash](https://upstash.com?ref=chronark.com), [Contentlayer](https://www.contentlayer.dev/) and deployed to [Vercel](https://vercel.com/).
 
-</div>
+Installation.
 
-## Cloning / Forking
+    yarn install
+    yarn dev
 
-Please remove all of my personal information (projects, images, etc.) before deploying your own version of this site.
+
+
+**tech stack**: tailwind css, nextjs 13 SSR, react-hook-form, typescript

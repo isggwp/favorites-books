@@ -1,11 +1,9 @@
-### cengongkirs simulation using [rajaongkir api](https://rajaongkir.com/dokumentasi/starter#cost-ringkasan)
+### Installation
 
+This is monumental guide you must be follow on every single step. 
+it's strongly important for maintanable typescript code in fallbacker-fullstack.
 
-Installation.
+1. we are using pnpm. ```run pnpm install ```
+2. install Commitizen on your local mechine . ```npm install commitizen -g```
+2. run this command for initial ```commitizen init cz-conventional-changelog --pnpm --save-dev --save-exact```. see [commitizen for detail](https://github.com/commitizen/cz-cli)
 
-    yarn install
-    yarn dev
-
-
-
-**tech stack**: tailwind css, nextjs 13 SSR, react-hook-form, typescript

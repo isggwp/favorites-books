@@ -48,7 +48,7 @@ export default function Home() {
     <Fragment>
       <Header />
 
-      <main>
+      <main className="w-full lg:w-7/12 max-w-[900px]">
         {/* Main input Section */}
         <section
           className={cn([
@@ -61,7 +61,7 @@ export default function Home() {
             // onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Enter for your website here"
-            className="w-10/12 h-12 lg:w-4/12 focus:w-7/12 px-4 lg:px-6 py-2 rounded-full border-2 border-gray-300  transition-all duration-300 focus:outline-none focus:border-indigo-200"
+            className="w-10/12 h-12 lg:w-7/12 focus:w-full px-4 lg:px-6 py-2 rounded-full border-2 border-gray-300  transition-all duration-300 focus:outline-none focus:border-indigo-200"
           />
         </section>
 
@@ -70,10 +70,17 @@ export default function Home() {
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger>
-                <p className="font-normal text-sm"> Is it accessible?</p>
+                <div className="flex flex-row space-x-3 items-center">
+                  <span className="w-3 h-3 bg-red-600 rounded-full"></span>
+                  <p className="font-normal text-sm">Title of the Accordion</p>
+                </div>
               </AccordionTrigger>
               <AccordionContent>
-                Yes. It adheres to the WAI-ARIA design pattern.
+                <div className="flex flex-col w-full">
+                  <p className="font-normal text-gray-800 text-sm">
+                    Details Description
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Header from "@/components/common/Header";
 import { useRouter } from "next/router";
@@ -21,6 +21,7 @@ export default function Home() {
   const router = useRouter();
 
   const [inputHeight, setInputHeight] = useState("h-[50vh]");
+  const [HtmlValue, setHtmlValue] = useState("");
 
   const {
     control,
@@ -46,6 +47,21 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    async function getData() {
+      const raw = await fetch(
+        "http://localhost:3000/api/scan?url=https://otospector.co.id/"
+      );
+      const datanya = await raw.json();
+      console.log("datanya", datanya);
+
+      setHtmlValue(datanya?.data?.html);
+    }
+    try {
+      getData();
+    } catch (error) {}
+  }, []);
+
   return (
     <Fragment>
       <Header />
@@ -66,6 +82,15 @@ export default function Home() {
             className="w-10/12 h-12 lg:w-7/12 focus:w-full px-4 lg:px-6 py-2 rounded-full border-2 border-gray-300  transition-all duration-300 focus:outline-none focus:border-indigo-200"
           />
         </section>
+
+        <div className="w-full debug-red h-[500px]">
+          <textarea
+            maxLength={10000}
+            className="w-full max-h-[500px] h-full overflow-y-auto"
+            value={HtmlValue}
+            disabled
+          />
+        </div>
 
         {/* Inspection Result */}
         <section className="w-full flex flex-col justify-center mx-auto">
@@ -155,6 +180,8 @@ export default function Home() {
             </TabsContent>
           </Tabs>
         </section>
+
+        <div className="py-20"></div>
       </main>
     </Fragment>
   );

@@ -32,6 +32,9 @@ dependencies:
   '@radix-ui/react-tooltip':
     specifier: ^1.0.7
     version: 1.0.7(@types/react-dom@18.2.18)(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
+  '@reduxjs/toolkit':
+    specifier: ^2.2.5
+    version: 2.2.5(react-redux@9.1.0)(react@18.2.0)
   '@tanstack/query-core':
     specifier: ^5.20.2
     version: 5.24.1
@@ -44,6 +47,9 @@ dependencies:
   '@tanstack/react-query-next-experimental':
     specifier: ^5.20.5
     version: 5.24.1(@tanstack/react-query@5.24.1)(next@14.1.0)(react@18.2.0)
+  '@types/redux-logger':
+    specifier: ^3.0.13
+    version: 3.0.13
   '@upstash/redis':
     specifier: ^1.23.3
     version: 1.27.1
@@ -77,6 +83,9 @@ dependencies:
   next-contentlayer:
     specifier: ^0.3.4
     version: 0.3.4(contentlayer@0.3.4)(esbuild@0.19.11)(markdown-wasm@1.2.0)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
+  next-redux-wrapper:
+    specifier: ^8.1.0
+    version: 8.1.0(next@14.1.0)(react-redux@9.1.0)(react@18.2.0)
   nextjs-progressbar:
     specifier: ^0.0.16
     version: 0.0.16(next@14.1.0)(react@18.2.0)
@@ -97,7 +106,7 @@ dependencies:
     version: 3.39.3(react-dom@18.2.0)(react@18.2.0)
   react-redux:
     specifier: ^9.1.0
-    version: 9.1.0(@types/react@18.2.46)(react@18.2.0)
+    version: 9.1.0(@types/react@18.2.46)(react@18.2.0)(redux@5.0.1)
   react-select:
     specifier: ^5.8.0
     version: 5.8.0(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
@@ -110,6 +119,9 @@ dependencies:
   react-wrap-balancer:
     specifier: ^1.1.0
     version: 1.1.0(react@18.2.0)
+  redux:
+    specifier: ^5.0.1
+    version: 5.0.1
   redux-logger:
     specifier: ^3.0.6
     version: 3.0.6
@@ -2056,6 +2068,25 @@ packages:
       '@babel/runtime': 7.24.0
     dev: false
 
+  /@reduxjs/toolkit@2.2.5(react-redux@9.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-aeFA/s5NCG7NoJe/MhmwREJxRkDs0ZaSqt0MxhWUrwCf1UQXpwR87RROJEql0uAkLI6U7snBOYOcKw83ew3FPg==}
+    peerDependencies:
+      react: ^16.9.0 || ^17.0.0 || ^18
+      react-redux: ^7.2.1 || ^8.1.3 || ^9.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-redux:
+        optional: true
+    dependencies:
+      immer: 10.1.1
+      react: 18.2.0
+      react-redux: 9.1.0(@types/react@18.2.46)(react@18.2.0)(redux@5.0.1)
+      redux: 5.0.1
+      redux-thunk: 3.1.0(redux@5.0.1)
+      reselect: 5.1.0
+    dev: false
+
   /@rometools/cli-darwin-arm64@12.1.3:
     resolution: {integrity: sha512-AmFTUDYjBuEGQp/Wwps+2cqUr+qhR7gyXAUnkL5psCuNCz3807TrUq/ecOoct5MIavGJTH6R4aaSL6+f+VlBEg==}
     cpu: [arm64]
@@ -2283,6 +2314,12 @@ packages:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
       csstype: 3.1.3
+
+  /@types/redux-logger@3.0.13:
+    resolution: {integrity: sha512-jylqZXQfMxahkuPcO8J12AKSSCQngdEWQrw7UiLUJzMBcv1r4Qg77P6mjGLjM27e5gFQDPD8vwUMJ9AyVxFSsg==}
+    dependencies:
+      redux: 5.0.1
+    dev: false
 
   /@types/resolve@1.20.6:
     resolution: {integrity: sha512-A4STmOXPhMUtHH+S6ymgE2GiBSMqf4oTvcQZMcHzokuTLVYzXTB8ttjcgxOVaAp2lGwEdzZ0J+cRbbeevQj1UQ==}
@@ -4073,6 +4110,10 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
+  /immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
+    dev: false
+
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -5187,6 +5228,18 @@ packages:
       - supports-color
     dev: false
 
+  /next-redux-wrapper@8.1.0(next@14.1.0)(react-redux@9.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-2hIau0hcI6uQszOtrvAFqgc0NkZegKYhBB7ZAKiG3jk7zfuQb4E7OV9jfxViqqojh3SEHdnFfPkN9KErttUKuw==}
+    peerDependencies:
+      next: '>=9'
+      react: '*'
+      react-redux: '*'
+    dependencies:
+      next: 14.1.0(@opentelemetry/api@1.6.0)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-redux: 9.1.0(@types/react@18.2.46)(react@18.2.0)(redux@5.0.1)
+    dev: false
+
   /next@14.1.0(@opentelemetry/api@1.6.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-wlzrsbfeSU48YQBjZhDzOwhWhGsy+uQycR8bHAOt1LY1bn3zZEcDyHQOEoN3aWzQ8LHCAJ1nqrWCc9XF2+O45Q==}
     engines: {node: '>=18.17.0'}
@@ -5751,7 +5804,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /react-redux@9.1.0(@types/react@18.2.46)(react@18.2.0):
+  /react-redux@9.1.0(@types/react@18.2.46)(react@18.2.0)(redux@5.0.1):
     resolution: {integrity: sha512-6qoDzIO+gbrza8h3hjMA9aq4nwVFCKFtY2iLxCtVT38Swyy2C/dJCGBXHeHLtx6qlg/8qzc2MrhOeduf5K32wQ==}
     peerDependencies:
       '@types/react': ^18.2.25
@@ -5769,6 +5822,7 @@ packages:
       '@types/react': 18.2.46
       '@types/use-sync-external-store': 0.0.3
       react: 18.2.0
+      redux: 5.0.1
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
@@ -5926,6 +5980,18 @@ packages:
       deep-diff: 0.3.8
     dev: false
 
+  /redux-thunk@3.1.0(redux@5.0.1):
+    resolution: {integrity: sha512-NW2r5T6ksUKXCabzhL9z+h206HQw/NJkcLm1GPImRQ8IzfXwRGqjVhKJGauHirT0DAuyy6hjdnMZaRoAcy0Klw==}
+    peerDependencies:
+      redux: ^5.0.0
+    dependencies:
+      redux: 5.0.1
+    dev: false
+
+  /redux@5.0.1:
+    resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
+    dev: false
+
   /regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
     dev: false
@@ -6061,6 +6127,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /reselect@5.1.0:
+    resolution: {integrity: sha512-aw7jcGLDpSgNDyWBQLv2cedml85qd95/iszJjN988zX1t7AVRJi19d9kto5+W7oCfQ94gyo40dVbT6g2k4/kXg==}
+    dev: false
 
   /resize-observer-polyfill@1.5.1:
     resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}

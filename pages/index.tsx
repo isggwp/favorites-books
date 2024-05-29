@@ -3,15 +3,25 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Header from "@/components/common/Header";
 import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+import {
+  MaterialEye,
+  MaterialSymbolsDelete,
+  MaterialSymbolsEdit,
+} from "@/components/common/icon";
 
 interface IFormInput {
   url: string;
@@ -66,120 +76,52 @@ export default function Home() {
     <Fragment>
       <Header />
 
-      <main className="w-full lg:w-7/12 max-w-[900px]">
-        {/* Main input Section */}
-        <section
-          className={cn([
-            inputHeight,
-            "transition-all duration-300 ease-in-out w-full flex flex-row items-center justify-center mx-auto",
-          ])}
-        >
-          <input
-            type="text"
-            // onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={handleKeyPress}
-            placeholder="Enter for your website here"
-            className="w-10/12 h-12 lg:w-7/12 focus:w-full px-4 lg:px-6 py-2 rounded-full border-2 border-gray-300  transition-all duration-300 focus:outline-none focus:border-indigo-200"
-          />
-        </section>
+      <main className="w-full py-2 lg:py-10 lg:w-7/12 max-w-[900px]">
+        <Table>
+          <TableHeader className="sticky">
+            <TableRow>
+              <TableHead className="w-[70px]">Id</TableHead>
+              <TableHead className="w-[80px]">Avatar</TableHead>
+              <TableHead className="w-[200px]">Name</TableHead>
+              <TableHead className="w-[150px]">Username</TableHead>
+              <TableHead className="w-[200px]">Email</TableHead>
+              <TableHead className="mx-auto flex justify-center items-center">
+                Action
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow className="hover:bg-muted cursor-pointer">
+              <TableCell className="font-medium w-[70px]">01</TableCell>
+              <TableCell className="font-medium w-[80px] justify-center mx-auto items-center">
+                <Image
+                  className="rounded-full mx-auto items-center justify-center flex"
+                  src="https://picsum.photos/50/50"
+                  alt="avatar"
+                  width={30}
+                  height={30}
+                />
+              </TableCell>
 
-        <div className="w-full debug-red h-[500px]">
-          <textarea
-            maxLength={10000}
-            className="w-full max-h-[500px] h-full overflow-y-auto"
-            value={HtmlValue}
-            disabled
-          />
-        </div>
-
-        {/* Inspection Result */}
-        <section className="w-full flex flex-col justify-center mx-auto">
-          <Tabs defaultValue="account" className="w-full">
-            <TabsList className="mx-auto flex justify-center">
-              <TabsTrigger
-                className="data-[state=active]:border-b-[1px] data-[state=active]:border-b-slate-500"
-                value="seo"
-              >
-                SEO
-              </TabsTrigger>
-              <TabsTrigger
-                className="data-[state=active]:border-b-[1px] data-[state=active]:border-b-slate-500"
-                value="security"
-              >
-                Security
-              </TabsTrigger>
-              <TabsTrigger
-                className="data-[state=active]:border-b-[1px] data-[state=active]:border-b-slate-500"
-                value="stack"
-              >
-                Tech Stack
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="seo">
-              <Accordion type="single" collapsible>
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>
-                    <div className="flex flex-row space-x-3 items-center">
-                      <span className="w-3 h-3 bg-red-600 rounded-full"></span>
-                      <p className="font-normal text-sm">
-                        Title of the Accordion
-                      </p>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="bg-slate-50 px-6 py-3">
-                    <div className="flex flex-col w-full">
-                      <p className="font-normal text-gray-800 text-sm">
-                        Details Description
-                      </p>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </TabsContent>
-            <TabsContent value="security">
-              <Accordion type="single" collapsible>
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>
-                    <div className="flex flex-row space-x-3 items-center">
-                      <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
-                      <p className="font-normal text-sm">
-                        Title of the Security Task
-                      </p>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="bg-indigo-50 px-6 py-3">
-                    <div className="flex flex-col w-full">
-                      <p className="font-normal text-gray-800 text-sm">
-                        Details Security Description
-                      </p>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </TabsContent>
-            <TabsContent value="stack">
-              <Accordion type="single" collapsible>
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>
-                    <div className="flex flex-row space-x-3 items-center">
-                      <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
-                      <p className="font-normal text-sm">
-                        Title of the Tech Task
-                      </p>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="bg-indigo-50 px-6 py-3">
-                    <div className="flex flex-col w-full">
-                      <p className="font-normal text-gray-800 text-sm">
-                        Details Tech Stack Description
-                      </p>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </TabsContent>
-          </Tabs>
-        </section>
+              <TableCell className="min-w-[200px] w-[200px] truncate">
+                Pandi Bakaro sadja
+              </TableCell>
+              <TableCell className="min-w-[150px] w-[150px]">
+                Sudarmaji182
+              </TableCell>
+              <TableCell className="min-w-[200px] w-[200px]">
+                Sudarmajihutomo@gmail.com
+              </TableCell>
+              <TableCell className="w-auto">
+                <section className="w-full flex justify-center items-center space-x-2 h-full">
+                  <MaterialEye />
+                  <MaterialSymbolsEdit />
+                  <MaterialSymbolsDelete className="text-red-500" />
+                </section>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
 
         <div className="py-20"></div>
       </main>

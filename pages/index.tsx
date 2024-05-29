@@ -4,6 +4,7 @@ import Header from "@/components/common/Header";
 import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { DeleteDialog } from "@/components/common/DeleteDialog";
 
 import {
   Table,
@@ -22,6 +23,7 @@ import {
   MaterialSymbolsDelete,
   MaterialSymbolsEdit,
 } from "@/components/common/icon";
+import { DetailsDialog } from "@/components/common/DetailsDialog";
 
 interface IFormInput {
   url: string;
@@ -30,6 +32,10 @@ interface IFormInput {
 export default function Home() {
   const router = useRouter();
 
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
+  
   const [inputHeight, setInputHeight] = useState("h-[50vh]");
   const [HtmlValue, setHtmlValue] = useState("");
 
@@ -57,21 +63,6 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
-    async function getData() {
-      const raw = await fetch(
-        "http://localhost:3000/api/scan?url=https://otospector.co.id/"
-      );
-      const datanya = await raw.json();
-      console.log("datanya", datanya);
-
-      setHtmlValue(datanya?.data?.html);
-    }
-    try {
-      getData();
-    } catch (error) {}
-  }, []);
-
   return (
     <Fragment>
       <Header />
@@ -96,7 +87,7 @@ export default function Home() {
               <TableCell className="font-medium w-[80px] justify-center mx-auto items-center">
                 <Image
                   className="rounded-full mx-auto items-center justify-center flex"
-                  src="https://picsum.photos/50/50"
+                  src="https://picsum.photos/50/50?random=2"
                   alt="avatar"
                   width={30}
                   height={30}
@@ -114,9 +105,14 @@ export default function Home() {
               </TableCell>
               <TableCell className="w-auto">
                 <section className="w-full flex justify-center items-center space-x-2 h-full">
-                  <MaterialEye />
+                  <MaterialEye
+                    onClick={() => setDetailsOpen(true)}
+                  />
                   <MaterialSymbolsEdit />
-                  <MaterialSymbolsDelete className="text-red-500" />
+                  <MaterialSymbolsDelete
+                    onClick={() => setDeleteOpen(true)}
+                    className="text-red-500"
+                  />
                 </section>
               </TableCell>
             </TableRow>
@@ -124,6 +120,14 @@ export default function Home() {
         </Table>
 
         <div className="py-20"></div>
+
+        {/* Details Dialog */}
+        <DetailsDialog open={detailsOpen} setOpen={setDetailsOpen} />
+
+        {/* Delete Dialog*/}
+        <DeleteDialog open={deleteOpen} setOpen={setDeleteOpen} />
+
+        
       </main>
     </Fragment>
   );

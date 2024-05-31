@@ -26,6 +26,6 @@ open terminal and run `pnpm run test`
 or for stream watch, you can use `pnpm run test:watch`
 
 
-## LIVE DEMO
+## Live demo
 
 [obs-test-one.vercel.app](https://obs-test-one.vercel.app/)

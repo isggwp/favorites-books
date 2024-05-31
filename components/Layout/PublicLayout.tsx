@@ -1,23 +1,22 @@
-"use client";
+'use client'
 
-import { Fragment } from "react";
-import { Drawer } from "vaul";
+import { Fragment } from 'react'
+import { Drawer } from 'vaul'
 
 export default function PublicLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <Fragment>
-   
       <div
-        className={`font-sans pt-28 lg:pt-24 px-4 bg-white relative flex flex-col w-full max-w-[1400px]  mx-auto justify-center items-center ${
-          process.env.NODE_ENV === "development" ? "debug-screens" : undefined
+        className={`relative mx-auto flex w-full max-w-[1400px] flex-col items-center justify-center bg-white px-4  pt-28 font-sans lg:pt-24 ${
+          process.env.NODE_ENV === 'development' ? 'debug-screens' : undefined
         }`}
       >
         {children}
       </div>
     </Fragment>
-  );
+  )
 }

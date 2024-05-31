@@ -1,5 +1,5 @@
-import React from "react";
-import type { SVGProps } from "react";
+import React from 'react'
+import type { SVGProps } from 'react'
 
 export function MaterialSymbolsMenu(props: SVGProps<SVGSVGElement>) {
   return (
@@ -19,5 +19,5 @@ export function MaterialSymbolsMenu(props: SVGProps<SVGSVGElement>) {
         d="M4 8h16M4 16h16"
       ></path>
     </svg>
-  );
+  )
 }

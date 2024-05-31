@@ -7,14 +7,14 @@ export default (phase, { defaultConfig }) => {
     images: {
       remotePatterns: [
         {
-          protocol: "https",
-          hostname: "picsum.photos",
-          port: "",
-          pathname: "/50/50/**",
+          protocol: 'https',
+          hostname: 'picsum.photos',
+          port: '',
+          pathname: '/50/50/**',
         },
       ],
     },
-  };
+  }
 
-  return nextConfig;
-};
+  return nextConfig
+}

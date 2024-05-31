@@ -28,4 +28,4 @@ or for stream watch, you can use `pnpm run test:watch`
 
 ## LIVE DEMO
 
-[VERCEL](obs-test-one.vercel.app)
+[obs-test-one.vercel.app](https://obs-test-one.vercel.app/)

@@ -27,5 +27,4 @@ or for stream watch, you can use `pnpm run test:watch`
 
 
 ## Live demo
-
 [obs-test-one.vercel.app](https://obs-test-one.vercel.app/)

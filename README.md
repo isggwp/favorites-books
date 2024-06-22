@@ -5,8 +5,7 @@ Simple Crud Application including responsive design, global state management, fo
 - State Management: [Redux](https://redux-toolkit.js.org/)
 - UI Component: [Shadcn](https://ui.shadcn.com/)
 - Form Validation: [React Hook Form](https://react-hook-form.com/)
-- testing: [JEST](https://jestjs.io/) & [React Testing Library](https://testing-library.com/)
-
+- caching management: [React Query](https://tanstack.com/query/latest)
 ### Installation
 
 This is monumental guide you must be follow on every single step at setup project.
@@ -19,12 +18,5 @@ This is monumental guide you must be follow on every single step at setup projec
 5. run for dev version in your local mechine with `pnpm run dev`
 
 
-
-## testing
-
-open terminal and run `pnpm run test`
-or for stream watch, you can use `pnpm run test:watch`
-
-
 ## Live demo
-[obs-test-one.vercel.app](https://obs-test-one.vercel.app/)
+[favorites-book.vercel.app/](https://favorites-book.vercel.app/)

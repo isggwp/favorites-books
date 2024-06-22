@@ -4,7 +4,6 @@ import { useForm, useWatch, Controller } from 'react-hook-form'
 import Image from 'next/image'
 import Noise from '/public/noise.gif'
 import DatePicker from 'react-datepicker'
-import short from 'short-uuid'
 import { BROKEN_IMAGE, FIX_CODE_IMAGE,  generateUniqueId,  validateImageUrl } from '@/lib/utils'
 
 import 'react-datepicker/dist/react-datepicker.css'
@@ -117,7 +116,6 @@ export function FormDetails({ mode, setOpen }: FormMode) {
 
       if (mode === 'edit') {
         try {
-          console.log(dataPayload)
           dispatch(updateBook(dataPayload as StoredBooks))
           dispatch(setStreamBooks(Number(dataPayload.id)))
           toast.success('Book successfully updated!')

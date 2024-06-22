@@ -12,7 +12,6 @@ import { MaterialFavorite } from '@/components/common/icon/MaterialFavorite'
 import { BookResponseFromAPI, StoredBooks } from '@/types/books'
 import BookPreview from '@/components/common/BookPreview'
 import { combineAndSortData } from '@/lib/utils'
-import Link from 'next/link'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { setBooks, setCurrentPage } from '@/lib/redux/slices/booksSlice'

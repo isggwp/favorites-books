@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, useId } from 'react'
 import ResponsivePagination from 'react-responsive-pagination'
 import { useQuery } from '@tanstack/react-query'
 import { fetchBookList } from '@/lib/fetcher'
@@ -18,8 +18,11 @@ import { setBooks, setCurrentPage } from '@/lib/redux/slices/booksSlice'
 import { RootState } from '@/lib/redux/store'
 import { BooksDetailsDialog } from '@/components/common/BooksDetailsDialog'
 import { FavoritesListDialog } from '@/components/common/FavoritesListDialog'
+import SkelHomepage from '@/components/Skeleton/SkelHomepage'
+
 
 export default function Home() {
+  const xid = useId()
   const dispatch = useDispatch()
   const [hasFetched, setHasFetched] = useState(false)
 
@@ -55,7 +58,8 @@ export default function Home() {
   const [createOpen, setCreateOpen] = useState(false)
   const [FavoritesOpen, setFavoritesOpen] = useState(false)
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <SkelHomepage />
+
   if (error) return <div>Error: {error.message}</div>
 
   return (
@@ -92,7 +96,12 @@ export default function Home() {
             </section>
             <section className="justify-items-between grid-rows-auto grid w-full grid-cols-2 justify-between gap-5 overflow-y-scroll  pb-10 sm:grid-cols-3 lg:grid-cols-5 lg:grid-rows-1">
               {paginatedBooks?.map((item: StoredBooks) => (
-                <CardBook setDeleteOpen={setDeleteOpen} setDetailsOpen={setDetailsOpen} setEditOpen={setEditOpen} data={item} />
+                <CardBook
+                  setDeleteOpen={setDeleteOpen}
+                  setDetailsOpen={setDetailsOpen}
+                  setEditOpen={setEditOpen}
+                  data={item}
+                />
               ))}
             </section>
 
@@ -107,7 +116,10 @@ export default function Home() {
           </section>
 
           <aside className="h-screeen hidden min-h-screen w-4/12 cursor-pointer flex-col border-none pb-4 pt-4 hover:border-slate-500 lg:flex">
-            <BookPreview setEditOpen={setEditOpen} setDeleteOpen={setDeleteOpen} />
+            <BookPreview
+              setEditOpen={setEditOpen}
+              setDeleteOpen={setDeleteOpen}
+            />
           </aside>
         </div>
 
@@ -115,7 +127,12 @@ export default function Home() {
         <FormDialog open={editOpen} mode="edit" setOpen={setEditOpen} />
         <FormDialog open={createOpen} mode="add" setOpen={setCreateOpen} />
 
-        <BooksDetailsDialog open={detailsOpen} setOpen={setDetailsOpen} setDeleteOpen={setDeleteOpen} setEditOpen={setEditOpen}/>
+        <BooksDetailsDialog
+          open={detailsOpen}
+          setOpen={setDetailsOpen}
+          setDeleteOpen={setDeleteOpen}
+          setEditOpen={setEditOpen}
+        />
 
         <FavoritesListDialog open={FavoritesOpen} setOpen={setFavoritesOpen} />
 
@@ -124,9 +141,7 @@ export default function Home() {
         <FAB setOpen={setCreateOpen} />
       </main>
       <nav className="fixed bottom-0 left-0 right-0 z-50 flex h-[3.2rem] w-full items-center justify-center border-t-[1px] lg:hidden">
-        <a
-          className="mx-auto flex h-full w-1/2 items-center justify-center bg-gray-500 font-sans text-sm font-medium text-white"
-        >
+        <a className="mx-auto flex h-full w-1/2 items-center justify-center bg-gray-500 font-sans text-sm font-medium text-white">
           Home
         </a>
         <div

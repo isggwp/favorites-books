@@ -30,7 +30,12 @@ export function FavoritesListDialog({ open, setOpen  }: FavoritesPropsDialog) {
         <DrawerContent className='rounded-none h-auto lg:w-full mx-auto lg:h-auto fixed flex flex-col  bg-black/70 backdrop-blur-sm outline-none focus:outline-none focus-visible:outline-none border-none' >
           <section className="relative w-full max-w-[1100px] mx-auto flex gap-x-3 snap-x snap-mandatory overflow-x-auto pb-4">
             {
-              books?.map((book) => <CardLine data={book} />)
+              books?.map((book) => {
+                if(favorites.includes(Number(book.id))) return (
+                  <CardLine data={book} />
+                )
+                return null
+              })
             }
           </section>
             <DrawerClose asChild>

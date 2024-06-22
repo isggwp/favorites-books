@@ -14,7 +14,7 @@ test('Should showing dialog after clicking Add New User', async () => {
     expect(screen.queryByRole('dialog')).toBeNull()
 
     const addNewUserButton = screen.getByRole('button', {
-      name: /Add new user/i,
+      name: /Add new book/i,
     })
     fireEvent.click(addNewUserButton)
 
@@ -33,7 +33,7 @@ test('Contains 14 inputfield', async () => {
       expect(screen.queryByRole('dialog')).toBeNull()
   
       const addNewUserButton = screen.getByRole('button', {
-        name: /Add new user/i,
+        name: /Add new book/i,
       })
       fireEvent.click(addNewUserButton)
   
@@ -50,7 +50,7 @@ test('Contains 14 inputfield', async () => {
       expect(screen.queryByRole('dialog')).toBeNull()
   
       const addNewUserButton = screen.getByRole('button', {
-        name: /Add new user/i,
+        name: /Add new book/i,
       })
       fireEvent.click(addNewUserButton)
 

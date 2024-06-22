@@ -1,32 +1,15 @@
-import { Fragment } from 'react'
+import { MaterialAddIcon } from './icon'
 
-export default function FAB() {
+type FABProps = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function FAB({setOpen}: FABProps ) {
   return (
-    <Fragment>
-      <div className="fixed bottom-16 right-10 z-[120] h-12 w-12 rounded-full bg-white lg:hidden">
-        <svg
-          className="relative left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 cursor-pointer opacity-65 transition-all duration-300 hover:rotate-180 hover:opacity-90 "
-          width="24px"
-          height="24px"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-          <g
-            id="SVGRepo_tracerCarrier"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></g>
-          <g id="SVGRepo_iconCarrier">
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M15 10.5A3.502 3.502 0 0 0 18.355 8H21a1 1 0 1 0 0-2h-2.645a3.502 3.502 0 0 0-6.71 0H3a1 1 0 0 0 0 2h8.645A3.502 3.502 0 0 0 15 10.5zM3 16a1 1 0 1 0 0 2h2.145a3.502 3.502 0 0 0 6.71 0H21a1 1 0 1 0 0-2h-9.145a3.502 3.502 0 0 0-6.71 0H3z"
-              fill="#000000"
-            ></path>
-          </g>
-        </svg>
+    <div onClick={() =>setOpen(true)} className="fixed flex lg:hidden bottom-20 right-9 lg:bottom-16 lg:right-24 z-40 h-12 w-12 rounded-full bg-gray-800 shadow-2xl">
+      <div className="group flex w-full h-full justify-center items-center cursor-pointer">
+        <MaterialAddIcon className='text-white text-xl' />
       </div>
-    </Fragment>
+    </div>
   )
 }

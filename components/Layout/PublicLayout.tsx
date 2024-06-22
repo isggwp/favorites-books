@@ -11,7 +11,7 @@ export default function PublicLayout({
   return (
     <Fragment>
       <div
-        className={`relative mx-auto flex w-full max-w-[1400px] flex-col items-center justify-center bg-white px-4  pt-28 font-sans lg:pt-24 ${
+        className={`relative mx-auto flex w-full flex-col items-center justify-center bg-white px-0 pt-0  font-sans ${
           process.env.NODE_ENV === 'development' ? 'debug-screens' : undefined
         }`}
       >

@@ -1,30 +1,36 @@
-// store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query/react';
 import logger from 'redux-logger';
-import { usersApi } from '@/lib/redux/service/usersApi';
-import usersReducer from '@/lib/redux/slices/usersSlice';
+import { booksReducer } from '@/lib/redux/slices/booksSlice';
 import { createWrapper } from 'next-redux-wrapper';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-export const makeStore = () =>
-  configureStore({
-    reducer: {
-      [usersApi.reducerPath]: usersApi.reducer,
-      users: usersReducer,
-      // Tambahkan reducer lain di sini
-    },
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware()
-        .concat(usersApi.middleware)
-        .concat(logger),
-    devTools: process.env.NODE_ENV !== 'production',
-  });
+const persistConfig = {
+  key: 'book',
+  storage,
+};
 
-setupListeners(makeStore().dispatch);
+const persistedReducer = persistReducer(persistConfig, booksReducer);
 
+export const store = configureStore({
+  reducer: {
+    book: persistedReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(logger),
+  devTools: process.env.NODE_ENV !== 'production',
+});
 
-type Store = ReturnType<typeof makeStore>;
-export type RootState = ReturnType<Store['getState']>;
-export type AppDispatch = Store['dispatch'];
+export const persistor = persistStore(store);
 
-export const wrapper = createWrapper<Store>(makeStore);
+setupListeners(store.dispatch);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+const makeStore = () => store;
+
+export const wrapper = createWrapper(makeStore);

@@ -2,7 +2,6 @@ import * as React from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import { Button } from '@/components/ui/button'
 import {toast} from 'react-hot-toast'
-import { RootState } from '@/lib/redux/store';
 import {
   Dialog,
   DialogContent,
@@ -23,8 +22,9 @@ import {
   DrawerTitle,
 } from '@/components/ui/drawer'
 
-import { deleteUsers } from '@/lib/redux/slices/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/lib/redux/store'
+import { deleteBook } from '@/lib/redux/slices/booksSlice'
 
 interface PropsDeleteDialog {
   open: boolean
@@ -35,11 +35,12 @@ export function DeleteDialog({ open, setOpen }: PropsDeleteDialog) {
   const isDesktop = useMediaQuery('(min-width: 768px)')
 
   const dispatch = useDispatch()
-  const streamUsers = useSelector((state: RootState) => state.users.streamUsers);
+
+  const streamBooks = useSelector((state: RootState) => state.book.streamBooks);
 
 
   const onDelete = async () => {
-    await dispatch(deleteUsers(streamUsers))
+    await dispatch(deleteBook(Number(streamBooks.id)))
 
     toast.success('User deleted successfully!')
     setOpen(false)
@@ -54,7 +55,7 @@ export function DeleteDialog({ open, setOpen }: PropsDeleteDialog) {
               Delete Confirmation
             </DialogTitle>
             <DialogDescription className="mx-auto py-4 text-center">
-              Are you sure you want to delete <strong>{streamUsers?.name}</strong>?
+              Are you sure you want to delete <strong>{streamBooks?.title}</strong>?
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -90,7 +91,7 @@ export function DeleteDialog({ open, setOpen }: PropsDeleteDialog) {
         <DrawerHeader className="pt-5 text-center">
           <DrawerTitle className="text-base">Delete Confirmation</DrawerTitle>
           <DrawerDescription>
-            Are you sure you want to delete <strong>{streamUsers?.name}</strong>?
+            {/* Are you sure you want to delete <strong>{streamUsers?.name}</strong>? */}
           </DrawerDescription>
         </DrawerHeader>
         <DrawerFooter className="pt-5">

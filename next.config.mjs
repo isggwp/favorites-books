@@ -12,6 +12,16 @@ export default (phase, { defaultConfig }) => {
           port: '',
           pathname: '/50/50/**',
         },
+        {
+          protocol: 'https',
+          hostname: 'm.media-amazon.com',
+          port: '',
+          pathname: '/images/I/**',
+        },
+        {
+            protocol: "https",
+            hostname: "**",
+        },
       ],
     },
   }
